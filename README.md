@@ -4,7 +4,8 @@ This is sa starwarsevents project from Knp
 ------------------------------------------
 Testing links:
 --------------
-  * [**test link**][14] - this is my freecodecamp link
+  * [**test link**][14] - this is my freecodecamp link.
+  
 Symfony Standard Edition
 ========================
 
