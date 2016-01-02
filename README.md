@@ -1,5 +1,7 @@
 It's going to be changed, this is for test purpose!
-
+---------------------------------------------------
+This is sa starwarsevents project from Knp
+=======================================---
 Symfony Standard Edition
 ========================
 
