@@ -5,6 +5,8 @@ This is sa starwarsevents project from Knp
 Notes:
 ------
   * Show every route in the app: **php app/console router:debug**
+  * Run the server: **php app/console server:run**
+  * Show(access) every services in the app: **php app/console container:debug**
 
 Symfony Standard Edition
 ========================
