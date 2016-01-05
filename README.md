@@ -8,6 +8,14 @@ Notes:
   * Run the server: **php app/console server:run**
   * Show(access) every services in the app: **php app/console container:debug**
 
+Useful information:
+-------------------
+
+  * - The template name is always have 3 parts: **EventBundle:Default:index.html.twig**
+  * 1) A Bundle name
+  * 2) A subdirectory
+  * 3) And a template file name
+
 Symfony Standard Edition
 ========================
 
