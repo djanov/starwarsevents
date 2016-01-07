@@ -1,7 +1,6 @@
 This is my first Symfony project
-==================================================
-This is sa starwarsevents project from Knp
-------------------------------------------
+=================================
+
 Notes:
 ------
   * Show every route in the app: **php app/console router:debug**
