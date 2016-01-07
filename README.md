@@ -7,6 +7,7 @@ Notes:
   * Show every route in the app: **php app/console router:debug**
   * Run the server: **php app/console server:run**
   * Show(access) every services in the app: **php app/console container:debug**
+  * Using doctrine: **php app/console doctrine:generate:entity**
 
 Useful information:
 -------------------
@@ -14,7 +15,9 @@ Useful information:
   * - The template name is always have 3 parts: **EventBundle:Default:index.html.twig**
   * 1) A Bundle name
   * 2) A subdirectory
-  * 3) And a template file name
+  * 3) And a template file name.
+  ------------------------------
+  * annotations (read phrase by doctrine) is: **PHP comments that's read like configuration**
 
 Symfony Standard Edition
 ========================
