@@ -1,4 +1,4 @@
-It's going to be changed, this is for test purpose!
+This is my first Symfony project
 ==================================================
 This is sa starwarsevents project from Knp
 ------------------------------------------
