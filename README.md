@@ -16,8 +16,8 @@ Useful information:
   * 1) A Bundle name
   * 2) A subdirectory
   * 3) And a template file name.
-  ------------------------------
-  * annotations (read phrase by doctrine) is: **PHP comments that's read like configuration**
+
+  * - annotations (read phrase by doctrine) is: **PHP comments that's read like configuration**
 
 Symfony Standard Edition
 ========================
