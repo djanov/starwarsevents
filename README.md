@@ -9,6 +9,7 @@ Notes:
   * Using doctrine: **php app/console doctrine:generate:entity**
   * query from console: **php app/console doctrine:query:sql "SELECT * from yoda_event"**
   * when updating the entity the doctrine need to be updated: **php app/console doctrine:schema:update --force**
+  * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
 
 Useful information:
 -------------------
@@ -97,3 +98,4 @@ Enjoy!
 [11]: https://symfony.com/doc/2.8/cookbook/logging/monolog.html
 [13]: https://symfony.com/doc/2.8/bundles/SensioGeneratorBundle/index.html
 [14]: http://www.freecodecamp.com/djanov
+[15]: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html
