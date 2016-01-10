@@ -7,6 +7,8 @@ Notes:
   * Run the server: **php app/console server:run**
   * Show(access) every services in the app: **php app/console container:debug**
   * Using doctrine: **php app/console doctrine:generate:entity**
+  * query from console: **php app/console doctrine:query:sql "SELECT * from yoda_event"**
+  * when updating the entity the doctrine need to be updated: **php app/console doctrine:schema:update --force**
 
 Useful information:
 -------------------
