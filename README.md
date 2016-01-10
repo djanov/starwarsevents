@@ -18,6 +18,14 @@ Useful information:
 
   * - annotations (read phrase by doctrine) is: **PHP comments that's read like configuration**
 
+PROBLEMS WITH ENTITY AND DOCTRINE AND ALL:
+==========================================
+ * clear cashe!!!!!! **php app/console cache:clear**
+ * genrate entetites(tables in database, make sure database is created and configurated in the app/config parameters.yml): **php app/console doctrine:generate:entities**
+ * if there is an error or need to update some field then: **php app/console doctrine:schema:update --force**
+ * DONE
+
+
 Symfony Standard Edition
 ========================
 
