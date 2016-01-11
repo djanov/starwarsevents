@@ -11,7 +11,7 @@ Notes:
   * when updating the entity the doctrine need to be updated: **php app/console doctrine:schema:update --force**
   * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
   * to use app in prod option not in app.dev first need to clear the cashe for prod: **php app/console cache:clear --env=prod**
-  * code generation(CRUD): **php app/console doctrine:generate:crud** 
+  * code generation(CRUD): **php app/console doctrine:generate:crud**
 
 Useful information:
 -------------------
@@ -31,7 +31,18 @@ PROBLEMS WITH ENTITY AND DOCTRINE AND ALL:
  * if there is an error or need to update some field then: **php app/console doctrine:schema:update --force**
  * DONE
 
-
+app/resources/base.html.twig
+Add later:
+<!-- {% block stylesheets %} // NEED TO INSTALL ASSETIC BUNDLE, to work with less and sass but it was not working so maybe try later,
+    {% stylesheets          // helpfull link: http://stackoverflow.com/questions/34039842/strange-unexpected-stylesheets-tag-error
+        'bundles/event/css/event.css'
+        'bundles/event/css/events.css'
+        'bundles/event/css/main.css'
+        filter='cssrewrite'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %} -->
 Symfony Standard Edition
 ========================
 
