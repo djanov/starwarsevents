@@ -47,13 +47,12 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-        "symfony-assets-install": "relative",
+        "symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
             "dev-master": "2.8-dev"
-        },
-        "symfony-assets-install": "symlink"
+        }
     }
 }
