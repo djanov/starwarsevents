@@ -11,6 +11,7 @@ Notes:
   * when updating the entity the doctrine need to be updated: **php app/console doctrine:schema:update --force**
   * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
   * to use app in prod option not in app.dev first need to clear the cashe for prod: **php app/console cache:clear --env=prod**
+  * code generation(CRUD): **php app/console doctrine:generate:crud** 
 
 Useful information:
 -------------------
