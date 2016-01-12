@@ -31,6 +31,31 @@ PROBLEMS WITH ENTITY AND DOCTRINE AND ALL:
  * if there is an error or need to update some field then: **php app/console doctrine:schema:update --force**
  * DONE
 
+ Understanding composer update and composer install:
+ ==================================================
+
+ composer update, install and composer.lock:
+ ------------------------------------------
+ While we wait, let’s look at a small mystery. We know that Composer reads information from composer.json. So what’s the purpose of the composer.lock file that’s at the root of our project and how did it get there?
+
+Composer actually has 2 different commands for downloading vendor stuff.
+
+composer update
+---------------
+The first is update. It says “read the composer.json file and update everything to the latest versions specified in there”. So if today we have Symfony 2.4.1 but 2.5.0 gets released, a Composer update would upgrade us to the new version. That’s because our Symfony version constraint of ~2.4 allows for anything greater than 2.4, but less than 3.0.
+
+Hold up. That could be a big issue. What happens if you deploy right as Symfony 2.5.0 comes out? Will your production server get that version, even though you were testing on 2.4.1? That would be lame.
+
+Because Composer is not lame, each time the composer.phar update command is run, it writes a composer.lock file. This records the exact versions of all of your vendors at that moment.
+
+composer install
+----------------
+And that’s where the second command - install - comes in. It ignores the composer.json file and reads entirely from the composer.lock file, assuming one exists. So as long as you run install on your deploy, you’ll get the exact versions you expected.
+
+So unless you’re adding a new library or intentionally upgrading something, always use composer.phar install.
+
+And when you do need to add or update something, you can be more precise by calling composer.phar update and passing it the name of the library you’re updating like we did. With this, Composer will only update that library, instead of everything.
+
 app/resources/base.html.twig
 Add later:
 <!-- {% block stylesheets %} // NEED TO INSTALL ASSETIC BUNDLE, to work with less and sass but it was not working so maybe try later,
