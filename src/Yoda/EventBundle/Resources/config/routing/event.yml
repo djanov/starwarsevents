@@ -1,7 +1,8 @@
-event_index:
-    path:     /
-    defaults: { _controller: "EventBundle:Event:index" }
-    methods:  GET
+# this is done via route annotations now
+# event_index:
+#     path:     /
+#     defaults: { _controller: "EventBundle:Event:index" }
+#     methods:  GET
 
 event_show:
     path:     /{id}/show

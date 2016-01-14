@@ -12,7 +12,8 @@ Notes:
   * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
   * to use app in prod option not in app.dev first need to clear the cashe for prod: **php app/console cache:clear --env=prod**
   * code generation(CRUD): **php app/console doctrine:generate:crud**
-  * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created. 
+  * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created.
+  * [for shortcuts][16]. This bundle provides a way to configure your controllers with annotations.
 
 Useful information:
 -------------------
@@ -139,3 +140,4 @@ Enjoy!
 [13]: https://symfony.com/doc/2.8/bundles/SensioGeneratorBundle/index.html
 [14]: http://www.freecodecamp.com/djanov
 [15]: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html
+[16]: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
