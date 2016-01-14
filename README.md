@@ -14,6 +14,7 @@ Notes:
   * code generation(CRUD): **php app/console doctrine:generate:crud**
   * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created.
   * [for shortcuts][16]. This bundle provides a way to configure your controllers with annotations.
+  * [Twig Mind Tricks][17]
 
 Useful information:
 -------------------
@@ -141,3 +142,4 @@ Enjoy!
 [14]: http://www.freecodecamp.com/djanov
 [15]: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html
 [16]: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
+[17]: https://knpuniversity.com/screencast/symfony2-ep1/mind-tricks#play

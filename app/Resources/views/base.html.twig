@@ -2,8 +2,14 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>{% block title %}Welcome!{% endblock %}</title>
-  {% block stylesheets %} 
+  <title>
+      {%- if block('title') -%}
+        {{- block('title') -}} | Starwars Events
+      {%- else -%}
+        Events from a galaxy far far away
+      {%- endif -%}
+  </title>
+  {% block stylesheets %}
       {% stylesheets
           'bundles/event/css/event.css'
           'bundles/event/css/events.css'
