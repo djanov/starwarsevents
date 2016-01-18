@@ -34,8 +34,17 @@ class SecurityController extends Controller {
   /**
    * @Route("/login_check", name="login_check")
    */
-  public function logoutAction() {
+  public function loginCheckAction() {
      // not going to put anythig here...
      // this is never executed, Symfony intercepts requests to this
   }
+
+  /**
+   * @Route("/logout", name="logout")
+   */
+  public function logoutAction() {
+     // not goint to put anything here
+  }
+
+
 }

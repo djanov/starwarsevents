@@ -26,6 +26,15 @@ Useful information:
 
   * - annotations (read phrase by doctrine) is: **PHP comments that's read like configuration**
 
+  * - by using the twig **parent()** function all the parent content is included first. in example if we are want to to use the login.css only in the login.html.twig:
+```
+{% block stylesheets %}
+  {{ parent() }}
+
+  <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}"/>
+{% endblock %}
+```  
+
 
 PROBLEMS WITH ENTITY AND DOCTRINE AND ALL:
 ==========================================

@@ -1,10 +1,16 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+  {{ parent() }}
+
+  <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}"/>
+{% endblock %}
+
 {% block body %}
 <section class="login">
   <article>
     {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    <div class="error">{{ error.messageKey|trans }}</div>
     {% endif %}
 
     <form action="{{ path('login_check') }}" method="post">
@@ -19,8 +25,8 @@
       is redirected to on success (more details below)
       <input type="hidden" name="_target_path" value="/account" />
       #}
-
-      <button type="submit">login</button>
+      <hr>
+      <button type="submit" class="btn btn-primary pull-right">login</button>
     </form>
   </article>
 </section>
