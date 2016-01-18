@@ -36,12 +36,25 @@ Useful information:
 ```  
 
 
-PROBLEMS WITH ENTITY AND DOCTRINE AND ALL:
+  Trust Levels: IS_AUTHENTICATED_ANONYMOUSLY, IS_AUTHENTICATED_REMEMBERED, IS_AUTHENTICATED_FULLY:
+  ===============================================================================================
+
+  **is_granted** is how you check security in Twig, and we also could have passed normal roles like **ROLE_USER** and **ROLE_ADMIN**, instead of this **IS_AUTHENTICATED_REMEMBERED** thingy. So in addition to checking to see if the user has a given role, Symfony has 3 other special security checks you can use.
+
+  * First, **IS_AUTHENTICATED_REMEMBERED** is given to all users who are logged in. They may have actually logged in during the session or may be logged in because they have a “remember me” cookie.
+  * Second, **IS_AUTHENTICATED_FULLY** is actually stronger. You only have this if you’ve actually logged in during this session. If you’re logged in because of a remember me cookie, you won’t have this;
+  * Finally, **IS_AUTHENTICATED_ANONYMOUSLY** is given to all users, even if you’re not logged in. And since literally everyone has this, it seems worthless But it actually does have a use if you need to white-list URLs that should be public.
+
+  Since we’re checking for **IS_AUTHENTICATED_REMEMBERED**, we’re showing the logout link to anyone who is logged in, via a remember me cookie or because they recently entered their password. We want to let both types of users logout.
+
+
+PROBLEMS WITH ENTITY AND DOCTRINE:
 ==========================================
  * clear cashe!!!!!! **php app/console cache:clear**
  * genrate entetites(tables in database, make sure database is created and configurated in the app/config parameters.yml): **php app/console doctrine:generate:entities**
  * if there is an error or need to update some field then: **php app/console doctrine:schema:update --force**
  * DONE
+
 
  Understanding composer update and composer install:
  ==================================================
