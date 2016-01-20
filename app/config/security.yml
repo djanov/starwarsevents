@@ -1,15 +1,13 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Yoda\UserBundle\Entity\User: brcrypt
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+      my_database_users:
+        entity: { class: UserBundle:User, property: username }
+
 
 
     # http://symfony.com/doc/current/book/security.html#firewalls-authentication
