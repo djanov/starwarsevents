@@ -36,8 +36,13 @@ Useful information:
 ```  
 
 
+  Using the bcrypt password encoder:
+  ---------------------------------
+
+  fore bcrypt password encoder there is no need to make the getsalt() in **Yoda\UserBundle\Entity\User.php** because the salt is making automatically by bcrypt the getsalt() method is just for the UserInterfaces because its requires 5 methods to work.
+
   Trust Levels: IS_AUTHENTICATED_ANONYMOUSLY, IS_AUTHENTICATED_REMEMBERED, IS_AUTHENTICATED_FULLY:
-  ===============================================================================================
+  ================================================================================================
 
   **is_granted** is how you check security in Twig, and we also could have passed normal roles like **ROLE_USER** and **ROLE_ADMIN**, instead of this **IS_AUTHENTICATED_REMEMBERED** thingy. So in addition to checking to see if the user has a given role, Symfony has 3 other special security checks you can use.
 
