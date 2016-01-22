@@ -15,6 +15,7 @@ Notes:
   * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created.
   * [for shortcuts][16]. This bundle provides a way to configure your controllers with annotations.
   * [Twig Mind Tricks][17]
+  * generate setters and getters example: **php app/console doctrine:generate:entities UserBundle --no-backup**  the --no-backup prevents the command from creating little backup version of the file. 
 
 Useful information:
 -------------------
