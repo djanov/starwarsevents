@@ -10,4 +10,16 @@ namespace Yoda\UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+   * @param $username
+   * @return User/null
+   */
+  public function findOneByUsernameOrEamil($username) {
+    return $this->createQueryBuilder('u')
+        ->andWhere('u.username = :username OR u.email = :email')
+        ->setParameter('username', $username)
+        ->setParameter('email', $username)
+        ->getQuery()
+        ->getOneOrNullResult();
+  }
 }
