@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 * @ORM\Table(name="yoda_user")
 * @ORM\Entity(repositoryClass="Yoda\UserBundle\Repository\UserRepository")
 */
-class User implements AdvancedUserInterface
+class User implements AdvancedUserInterface, \Serializable
 {
   /**
   * @var int
@@ -195,4 +195,22 @@ class User implements AdvancedUserInterface
     {
         return $this->email;
     }
+
+    public function serialize()
+   {
+      return serialize(array(
+        $this->id,
+        $this->username,
+        $this->password
+      ));
+   }
+
+   public function unserialize($serialized)
+   {
+      list(
+        $this->id,
+        $this->username,
+        $this->password
+      ) = unserialize($serialized);
+   }
 }

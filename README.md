@@ -15,7 +15,7 @@ Notes:
   * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created.
   * [for shortcuts][16]. This bundle provides a way to configure your controllers with annotations.
   * [Twig Mind Tricks][17]
-  * generate setters and getters example: **php app/console doctrine:generate:entities UserBundle --no-backup**  the --no-backup prevents the command from creating little backup version of the file. 
+  * generate setters and getters example: **php app/console doctrine:generate:entities UserBundle --no-backup**  the --no-backup prevents the command from creating little backup version of the file.
 
 Useful information:
 -------------------
@@ -35,6 +35,13 @@ Useful information:
   <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}"/>
 {% endblock %}
 ```  
+  Useful links:
+  -------------
+  Serializing:
+
+  * [The Basics of Serializing Objects in PHP][18]
+  * [serialize][19]
+  * [The Serializer Component][20]
 
 
   Using the bcrypt password encoder:
@@ -171,3 +178,6 @@ Enjoy!
 [15]: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html
 [16]: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 [17]: https://knpuniversity.com/screencast/symfony2-ep1/mind-tricks#play
+[18]: http://www.devshed.com/c/a/PHP/The-Basics-of-Serializing-Objects-in-PHP/
+[19]: http://php.net/manual/en/function.serialize.php
+[20]: http://symfony.com/doc/2.8/components/serializer.html
