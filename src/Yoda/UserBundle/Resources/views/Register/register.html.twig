@@ -16,9 +16,14 @@
 
           {{ form_row(form.username) }}
           {{ form_row(form.email) }}
-          {{ form_row(form.password) }}
+          {{ form_row(form.password.first, {
+            'label': 'Password'
+          }) }}
+          {{ form_row(form.password.second, {
+            'label': 'Repeat Password'
+          }) }}
 
-          {{ form_rest(form) }}  
+          {{ form_rest(form) }}
           <input type="submit" value="Register!" class="btn btn-primary pull-right" />
         </form>
     </article>

@@ -17,6 +17,7 @@ Notes:
   * [Twig Mind Tricks][17]
   * generate setters and getters example: **php app/console doctrine:generate:entities UserBundle --no-backup**  the --no-backup prevents the command from creating little backup version of the file.
   * [Twig Template Form Function and Variable Reference][21]
+  * [Form Types Reference][22]
 
 Useful information:
 -------------------
@@ -183,3 +184,4 @@ Enjoy!
 [19]: http://php.net/manual/en/function.serialize.php
 [20]: http://symfony.com/doc/2.8/components/serializer.html
 [21]: http://symfony.com/doc/2.8/reference/forms/twig_reference.html
+[22]: http://symfony.com/doc/2.8/reference/forms/types.html
