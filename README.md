@@ -37,6 +37,18 @@ Useful information:
   <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}"/>
 {% endblock %}
 ```  
+
+  * Don’t Need isSubmitted
+  ```
+  if ($form->isSubmitted() && $form->isValid()) {
+
+  ```
+  ```
+  if ($form->isValid()) {
+  ```
+  This actually doesn’t change anything because **isValid()** automatically returns false if the form wasn’t submitted - meaning, if the request isn’t a POST. So either just do this, or keep the **isSubmitted** part in there if you want.
+
+  
   Useful links:
   -------------
   Serializing:
