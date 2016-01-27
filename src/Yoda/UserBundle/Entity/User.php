@@ -44,6 +44,12 @@ class User implements AdvancedUserInterface, \Serializable
   * @ORM\Column(name="password", type="string", length=255)
   */
   private $password;
+  /**
+   * Just stores the plain password temporarly!
+   *
+   * @var string
+   */
+  private $plainPassword;
 
   /**
   * @var array
@@ -131,7 +137,7 @@ class User implements AdvancedUserInterface, \Serializable
   }
 
   public function eraseCredentials() {
-    // logic goes here later
+    $this->setPlainPassword(null);
   }
 
   public function getSalt() {
@@ -213,4 +219,18 @@ class User implements AdvancedUserInterface, \Serializable
         $this->password
       ) = unserialize($serialized);
    }
+
+   /**
+    * @return mixed
+    */
+    public function getPlainPassword() {
+      return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+     public function setPlainPassword($plainPassword) {
+       $this->plainPassword = $plainPassword;
+     }
 }
