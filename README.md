@@ -48,7 +48,15 @@ Useful information:
   ```
   This actually doesn’t change anything because **isValid()** automatically returns false if the form wasn’t submitted - meaning, if the request isn’t a POST. So either just do this, or keep the **isSubmitted** part in there if you want.
 
-  
+  * Disabling HTML5 Validation:
+    To disable it, just add a novalidate attribute to your form tag:
+  ```
+  {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
+
+  {# ... #}
+  <form action="{{ path('user_register') }}" method="POST" novalidate="novalidate">
+  ```
+
   Useful links:
   -------------
   Serializing:
