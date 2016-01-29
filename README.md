@@ -57,6 +57,44 @@ Useful information:
   <form action="{{ path('user_register') }}" method="POST" novalidate="novalidate">
   ```
 
+  * To add symfony server side validation in the user class need to add:
+  ```
+  // src/Yoda/UserBundle/Entity/User.php
+
+  use Symfony\Component\Validator\Constraints as Assert;
+  ```
+  Now the validation to add using the Assert to make the field not blank example:
+  ```
+  /**
+ * @ORM\Column(name="username", type="string", length=255)
+ * @Assert\NotBlank()
+ */
+private $username;
+  ```
+  If we wan to add unique constraint example if we wan to check if the username or the email is already in the database then we need to add the **UniqueEntity** Constraint.
+
+  ```
+  // src/Yoda/UserBundle/Entity/User.php
+
+  use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+  ```
+   After that to add **UniqueEntity** it need to be added above a class not the property. it takes two options the field that should be unique followed by a (error)message:
+   ```
+   // src/Yoda/UserBundle/Entity/User.php
+// ...
+
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @ORM\Table(name="yoda_user")
+ * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="username", message="That username is taken!")
+ * @UniqueEntity(fields="email", message="That email is taken!")
+ */
+class User implements AdvancedUserInterface, Serializable
+
+   ```
+
   Useful links:
   -------------
   Serializing:
@@ -65,6 +103,9 @@ Useful information:
   * [serialize][19]
   * [The Serializer Component][20]
 
+  Validation:
+
+  * [Validation Constraints Reference][23]
 
   Using the bcrypt password encoder:
   ---------------------------------
@@ -205,3 +246,4 @@ Enjoy!
 [20]: http://symfony.com/doc/2.8/components/serializer.html
 [21]: http://symfony.com/doc/2.8/reference/forms/twig_reference.html
 [22]: http://symfony.com/doc/2.8/reference/forms/types.html
+[23]: http://symfony.com/doc/current/reference/constraints.html
