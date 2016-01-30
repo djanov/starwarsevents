@@ -8,45 +8,54 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Yoda\UserBundle\Entity\User;
 use Yoda\UserBundle\Form\RegisterFormType;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegisterController extends Controller {
-    /**
-     * @Route("/register", name="user_register")
-     * @Template()
-     */
+  /**
+  * @Route("/register", name="user_register")
+  * @Template()
+  */
 
-    public function registerAction(Request $request) {
+  public function registerAction(Request $request) {
 
-      $user = new User();
-      $user->setUsername('Leia');
+    $user = new User();
+    $user->setUsername('Leia');
 
-      $form = $this->createForm(new RegisterFormType(), $user);
+    $form = $this->createForm(new RegisterFormType(), $user);
 
-     $form->handleRequest($request);
-     if($form->isSubmitted() && $form->isValid()) {
-       $user = $form->getData();
+    $form->handleRequest($request);
+    if($form->isSubmitted() && $form->isValid()) {
+      $user = $form->getData();
 
 
-       $user->setPassword($this->encodePassword($user, $user->getPlainPassword()));
+      $user->setPassword($this->encodePassword($user, $user->getPlainPassword()));
 
-       $em = $this->getDoctrine()->getManager();
-       $em->persist($user);
-       $em->flush();
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($user);
+      $em->flush();
+      if($form->isValid()) {
+        $request->getSession()->getFlashbag()
+        ->add('succes', 'Welcome to the Death Star! Havea magical day!');
+        $this->authenticateUser($user);
 
-       $request->getSession()->getFlashbag()
-          ->add('succes', 'Welcome to the Death Star! Havea magical day!');
-
-       return $this->redirectToRoute ('event');
-
-     }
-
-      return array('form' => $form->createView());
+        return $this->redirectToRoute ('event');
+      }
     }
 
+    return array('form' => $form->createView());
+  }
 
-    private function encodePassword(User $user, $plainPassword) {
-      $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
 
-      return $encoder->encodePassword($plainPassword, $user->getSalt());
-        }
+  private function encodePassword(User $user, $plainPassword) {
+    $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+
+    return $encoder->encodePassword($plainPassword, $user->getSalt());
+  }
+
+  private function authenticateUser(User $user) {
+    $providerKey = 'secured_are';
+    $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+
+    $this->container->get('security.token_storage')->setToken($token);
+  }
 }
