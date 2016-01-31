@@ -19,6 +19,9 @@ Notes:
   * [Twig Template Form Function and Variable Reference][21]
   * [Form Types Reference][22]
   * To run phpunit testing in windows: **bin\phpunit -c app**
+  * Use [Behat][24] instead of Symfony's built in functional testing tools
+  * [Migrating to symfony 3.0][25] 1/68 ptt
+  * [The DomCrawler Component][26] aka how to use **crawler** in testing
 
 Useful information:
 -------------------
@@ -248,3 +251,6 @@ Enjoy!
 [21]: http://symfony.com/doc/2.8/reference/forms/twig_reference.html
 [22]: http://symfony.com/doc/2.8/reference/forms/types.html
 [23]: http://symfony.com/doc/current/reference/constraints.html
+[24]: http://knpuniversity.com/screencast/behat
+[25]: http://www.slideshare.net/nicolas.grekas/migrating-to-symfony-30
+[26]: http://symfony.com/doc/current/components/dom_crawler.html

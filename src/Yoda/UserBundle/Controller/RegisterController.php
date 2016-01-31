@@ -35,7 +35,7 @@ class RegisterController extends Controller {
       $em->flush();
       if($form->isValid()) {
         $request->getSession()->getFlashbag()
-        ->add('succes', 'Welcome to the Death Star! Havea magical day!');
+        ->add('succes', 'Welcome to the Death Star, have a magical day!');
         $this->authenticateUser($user);
 
         return $this->redirectToRoute ('event');
