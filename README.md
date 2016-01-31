@@ -18,6 +18,7 @@ Notes:
   * generate setters and getters example: **php app/console doctrine:generate:entities UserBundle --no-backup**  the --no-backup prevents the command from creating little backup version of the file.
   * [Twig Template Form Function and Variable Reference][21]
   * [Form Types Reference][22]
+  * To run phpunit testing in windows: **bin\phpunit -c app**
 
 Useful information:
 -------------------
