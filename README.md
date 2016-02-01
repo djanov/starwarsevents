@@ -5,7 +5,7 @@ Notes:
 ------
   * Show every route in the app: **php app/console router:debug**
   * Run the server: **php app/console server:run**
-  * Show(access) every services in the app: **php app/console container:debug**
+  * Show(access) every services in the app: **php app/console container:debug** [More about Container, the “doctrine” Service and the Entity Manager][27].
   * Using doctrine: **php app/console doctrine:generate:entity**
   * query from console: **php app/console doctrine:query:sql "SELECT * from yoda_event"**
   * when updating the entity the doctrine need to be updated: **php app/console doctrine:schema:update --force**
@@ -254,3 +254,4 @@ Enjoy!
 [24]: http://knpuniversity.com/screencast/behat
 [25]: http://www.slideshare.net/nicolas.grekas/migrating-to-symfony-30
 [26]: http://symfony.com/doc/current/components/dom_crawler.html
+[27]: https://knpuniversity.com/screencast/symfony2-ep2/container-doctrine#play
