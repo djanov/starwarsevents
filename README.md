@@ -12,6 +12,7 @@ Notes:
   * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
   * to use app in prod option not in app.dev first need to clear the cashe for prod: **php app/console cache:clear --env=prod**
   * code generation(CRUD): **php app/console doctrine:generate:crud**
+  * to run doctrine (adding dummy files): **php app/console doctrine:fixtures:load**
   * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created.
   * [for shortcuts][16]. This bundle provides a way to configure your controllers with annotations.
   * [Twig Mind Tricks][17]
@@ -98,7 +99,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class User implements AdvancedUserInterface, Serializable
 
    ```
+ [Strategies for Controller Access][28]
+ ---------------------------------
+ Keep these two tips in mind when using roles:
+ - 1. Protect the actual parts of your application using feature-specific roles, not user-specific roles. This means your roles should describe the features they give you access to, like **ROLE_EVENT_CREATE** and not the type of user that should have access, like **ROLE_ADMIN**.
 
+ - 2. Use the role hierarchy section to manage which types of users have which roles. For example, you might decide that **ROLE_USER** should have **ROLE_BLOG_CREATE** and **ROLE_EVENT_CREATE**, which you setup here. Assign your actual users these user-specific roles, like **ROLE_USER** or **ROLE_MARKETING**.
   Useful links:
   -------------
   Serializing:
@@ -255,3 +261,4 @@ Enjoy!
 [25]: http://www.slideshare.net/nicolas.grekas/migrating-to-symfony-30
 [26]: http://symfony.com/doc/current/components/dom_crawler.html
 [27]: https://knpuniversity.com/screencast/symfony2-ep2/container-doctrine#play
+[28]: https://knpuniversity.com/screencast/symfony2-ep2/role-hierarchies#play

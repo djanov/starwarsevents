@@ -41,8 +41,8 @@ class EventController extends Controller
   public function newAction(Request $request)
   {
 
-    $this->enforceUserSecurity();
-
+    //$this->enforceUserSecurity();
+    $this->enforceUserSecurity('ROLE_EVENT_CREATE');
     $event = new Event();
     $form = $this->createForm(new EventType(), $event);
     $form->handleRequest($request);
@@ -138,12 +138,12 @@ class EventController extends Controller
     ;
   }
 
-  private function enforceUserSecurity()
+  private function enforceUserSecurity($role = 'ROLE_USER')
   {
-    $securityContext = $this->container->get('security.context');
-    if (!$securityContext->isGranted('ROLE_USER')) {
-      throw $this->createAccessDeniedException('Need ROLE_USER!');
-      # throw new AccessDeniedException('Need ROLE_USER'); # for old symfony before 2.5
-    }
+      $securityContext = $this->container->get('security.context');
+      if (!$securityContext->isGranted($role)) {
+          throw $this->createAccessDeniedException('Need ' .$role);
+        // in old symfony  throw new AccessDeniedException('Need '.$role);
+      }
   }
 }
