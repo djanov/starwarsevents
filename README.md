@@ -105,6 +105,8 @@ class User implements AdvancedUserInterface, Serializable
  - 1. Protect the actual parts of your application using feature-specific roles, not user-specific roles. This means your roles should describe the features they give you access to, like **ROLE_EVENT_CREATE** and not the type of user that should have access, like **ROLE_ADMIN**.
 
  - 2. Use the role hierarchy section to manage which types of users have which roles. For example, you might decide that **ROLE_USER** should have **ROLE_BLOG_CREATE** and **ROLE_EVENT_CREATE**, which you setup here. Assign your actual users these user-specific roles, like **ROLE_USER** or **ROLE_MARKETING**.
+
+
   Useful links:
   -------------
   Serializing:
