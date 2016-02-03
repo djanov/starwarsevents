@@ -106,6 +106,33 @@ class User implements AdvancedUserInterface, Serializable
 
  - 2. Use the role hierarchy section to manage which types of users have which roles. For example, you might decide that **ROLE_USER** should have **ROLE_BLOG_CREATE** and **ROLE_EVENT_CREATE**, which you setup here. Assign your actual users these user-specific roles, like **ROLE_USER** or **ROLE_MARKETING**.
 
+ Switching Users / Impersonation
+ -------------------------------
+ To to activate **switch_user*** feature:
+ ```
+ # app/config/security.yml
+ security:
+     # ...
+     firewalls:
+         secured_area:
+             # ...
+             switch_user: ~
+ ```
+
+ To use it, just add a **?_switch_user=** query parameter to any page with the username you want to change to. Make sure that the admin has the **ROLE_ALLOWED_TO_SWITCH**:
+
+ ```
+ # app/config/security.yml
+security:
+    # ...
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE, ROLE_ALLOWED_TO_SWITCH]
+        # ...
+
+ ```
+
+ to exit(logout) the user: **localhost/app_dev.php/new?_switch_user=_exit**
+
 
   Useful links:
   -------------

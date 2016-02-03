@@ -2,7 +2,7 @@ security:
     encoders:
         Yoda\UserBundle\Entity\User: bcrypt
     role_hierarchy:
-        ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE]
+        ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE, ROLE_ALLOWED_TO_SWITCH]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     providers:
       my_database_users:
@@ -15,6 +15,8 @@ security:
         secured_area:
             # this firewall applies to all URLs
             pattern: ^/
+
+            switch_user: ~
 
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
