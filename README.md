@@ -25,6 +25,7 @@ Notes:
   * Use [Behat][24] instead of Symfony's built in functional testing tools
   * [Migrating to symfony 3.0][25] 1/68 ptt
   * [The DomCrawler Component][26] aka how to use **crawler** in testing
+  * [Accessing the User][29]
 
 Useful information:
 -------------------
@@ -293,3 +294,4 @@ Enjoy!
 [26]: http://symfony.com/doc/current/components/dom_crawler.html
 [27]: https://knpuniversity.com/screencast/symfony2-ep2/container-doctrine#play
 [28]: https://knpuniversity.com/screencast/symfony2-ep2/role-hierarchies#play
+[29]: https://knpuniversity.com/screencast/symfony2-ep2/accessing-security-user#play
