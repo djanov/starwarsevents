@@ -1,6 +1,8 @@
 This is my first Symfony project
 =================================
 
+novalidate="novalidate atrakni?!
+
 Notes:
 ------
   * Show every route in the app: **php app/console router:debug**

@@ -41,7 +41,11 @@ security:
                 target: event # a route for our homepage
 
     access_control:
-
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/(css|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/(_wdt|_profiler), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/, roles: ROLE_USER }
 # putting security in the controller class instead!
 #        - { path: ^/new, roles: ROLE_USER }
 #        - { path: ^/create, roles: ROLE_USER }
