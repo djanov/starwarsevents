@@ -39,6 +39,8 @@ security:
                 path: logout # a route name
                 # The name of the route to redirect to after logging out
                 target: event # a route for our homepage
+            remember_me:
+              secret: "Order 1138"    
 
     access_control:
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
