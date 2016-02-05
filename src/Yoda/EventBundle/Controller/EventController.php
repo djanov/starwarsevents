@@ -47,7 +47,10 @@ class EventController extends Controller
     $form = $this->createForm(new EventType(), $event);
     $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
+    if ($form->isValid()) {
+      $user = $this->getUser();
+
+      $event->setOwner($user);
       $em = $this->getDoctrine()->getManager();
       $em->persist($event);
       $em->flush();
@@ -69,7 +72,7 @@ class EventController extends Controller
   {
     $deleteForm = $this->createDeleteForm($event);
 
-    return $this->render('event/show.html.twig', array(
+    return $this->render('EventBundle:Event:show.html.twig', array(
       'event' => $event,
       'delete_form' => $deleteForm->createView(),
     ));
