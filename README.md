@@ -10,7 +10,7 @@ Notes:
   * Show(access) every services in the app: **php app/console container:debug** [More about Container, the “doctrine” Service and the Entity Manager][27].
   * Using doctrine: **php app/console doctrine:generate:entity**
   * query from console: **php app/console doctrine:query:sql "SELECT * from yoda_event"**
-  * when updating the entity the doctrine need to be updated: **php app/console doctrine:schema:update --force**
+  * when updating the entity the doctrine need to be updated: before updating we can see what would be done: **php app/console doctrine:schema:update --dump-sql** and if its everything is alright we can execute command: **php app/console doctrine:schema:update --force** 
   * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
   * to use app in prod option not in app.dev first need to clear the cashe for prod: **php app/console cache:clear --env=prod**
   * code generation(CRUD): **php app/console doctrine:generate:crud**
