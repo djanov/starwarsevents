@@ -86,6 +86,8 @@ class EventController extends Controller
   {
     $this->enforceUserSecurity();
 
+   $this->enforceOwnerSecurity($event);
+
     $deleteForm = $this->createDeleteForm($event);
     $editForm = $this->createForm(new EventType(), $event);
     $editForm->handleRequest($request);
@@ -98,7 +100,7 @@ class EventController extends Controller
       return $this->redirectToRoute('event_edit', array('id' => $event->getId()));
     }
 
-    return $this->render('event/edit.html.twig', array(
+    return $this->render('EventBundle:Event:edit.html.twig', array(
       'event' => $event,
       'edit_form' => $editForm->createView(),
       'delete_form' => $deleteForm->createView(),
@@ -118,6 +120,9 @@ class EventController extends Controller
 
     if ($form->isSubmitted() && $form->isValid()) {
       $em = $this->getDoctrine()->getManager();
+
+      $this->enforceOwnerSecurity($event);
+
       $em->remove($event);
       $em->flush();
     }
@@ -149,4 +154,13 @@ class EventController extends Controller
         // in old symfony  throw new AccessDeniedException('Need '.$role);
       }
   }
+
+  private function enforceOwnerSecurity(Event $event) {
+    $user = $this->getUser();
+
+    if ($user != $event->getOwner()) {
+      throw $this->createAccessDeniedException('You are not the owner!!!');
+    }
+  }
+
 }
