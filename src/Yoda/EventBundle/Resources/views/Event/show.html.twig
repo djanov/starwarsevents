@@ -16,12 +16,15 @@
                     {{ event.name }}
                     {% if app.user == event.owner %}
                       <a class="button" href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
-                    {% endif %}  
+                    {% endif %}
                 </h1>
 
                 <dl>
                     <dt>where:</dt>
                     <dd>{{ event.location }}</dd>
+
+                    <dt>host:</dt>
+                    <dd>{{ event.owner.username }}</dd>
 
                     <dt>when:</dt>
                     <dd>{{ event.time |  date('g:ia / l M j, Y') }}</dd>

@@ -8,6 +8,9 @@ use Symfony\Component\Security\Core\Exeption\AccesDeniedException;
 
 class Controller extends BaseController {
 
+  /**
+   * @return \Symfony\Component\Security\Core\SecurityContext
+   */
   public function getSecurityContext() {
     return $this->container->get('security.context');
   }

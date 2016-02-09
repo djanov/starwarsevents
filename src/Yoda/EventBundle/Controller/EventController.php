@@ -48,8 +48,16 @@ class EventController extends Controller
 
     if ($form->isValid()) {
       $user = $this->getUser();
-
+      // this works!
+      // this is setting the owning side of relationship ManyToOne or OneToMany wich means its alway singular side
       $event->setOwner($user);
+
+      // this would do nothing
+      // it sets the inverse side
+      // $events = $user->getEvents();
+      // $events[] = $entity;
+      // $user->setEvents($events);
+
       $em = $this->getDoctrine()->getManager();
       $em->persist($event);
       $em->flush();
