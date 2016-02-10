@@ -72,3 +72,8 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+stof_doctrine_extensions:
+  orm:
+    default:
+      sluggable: true

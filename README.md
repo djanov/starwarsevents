@@ -138,6 +138,14 @@ security:
 
  to exit(logout) the user: **localhost/app_dev.php/new?_switch_user=_exit**
 
+  If we have problem with example existing events that's isn't unique, so when we run **php app/console doctrine:schema:update --force** and have bunch of errors try first drop the schema and rebuild from scratch to get around it:
+  ```
+  php app/console doctrine:schema:drop --force
+  php app/console doctrine:schema:create  
+  php app/console doctrine:fixtures:load
+
+  ```
+  and reload the fixtures ofc.
 
   Useful links:
   -------------
