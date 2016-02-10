@@ -62,7 +62,7 @@ class EventController extends Controller
       $em->persist($event);
       $em->flush();
 
-      return $this->redirectToRoute('event_show', array('id' => $event->getId()));
+      return $this->redirectToRoute('event_show', array('slug' => $event->getSlug()));
     }
 
     return $this->render('EventBundle:Event:new.html.twig', array(
@@ -75,8 +75,17 @@ class EventController extends Controller
   * Finds and displays a Event entity.
   *
   */
-  public function showAction(Event $event)
+  public function showAction($slug)
   {
+    $em = $this->getDoctrine()->getManager();
+
+    $event = $em->getRepository('EventBundle:Event')
+        ->findOneBy(array('slug' => $slug));
+
+    if (!$event) {
+      throw $this->createNotFoundException('Unable to find Event entity.');
+    }
+
     $deleteForm = $this->createDeleteForm($event);
 
     return $this->render('EventBundle:Event:show.html.twig', array(
