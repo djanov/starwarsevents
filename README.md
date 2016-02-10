@@ -151,7 +151,7 @@ security:
 
   ```
    git grep event_show
-   
+
   ```
 
   Useful links:
@@ -165,6 +165,11 @@ security:
   Validation:
 
   * [Validation Constraints Reference][23]
+
+  DoctrineExtensions:
+
+  * For slug [StofDoctrineExtensionsBundle][32]
+  * Also using by slug to (sluggable.md, timestampable.md)[DoctrineExtensions/doc/][33]
 
   Using the bcrypt password encoder:
   ---------------------------------
@@ -314,3 +319,5 @@ Enjoy!
 [29]: https://knpuniversity.com/screencast/symfony2-ep2/accessing-security-user#play
 [30]: http://symfony.com/doc/2.8/cookbook/form/form_collections.html
 [31]: http://symfony.com/doc/2.8/reference/forms/types/collection.html
+[32]: https://github.com/stof/StofDoctrineExtensionsBundle/blob/master/Resources/doc/index.rst
+[33]: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc
