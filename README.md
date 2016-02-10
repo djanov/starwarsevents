@@ -147,6 +147,13 @@ security:
   ```
   and reload the fixtures ofc.
 
+  If we set for example **slug** wildcard istead of **id** in **event_show** route, we need to change the wildcard we're passing to it. To make sure **event_show** we're using this route:
+
+  ```
+   git grep event_show
+   
+  ```
+
   Useful links:
   -------------
   Serializing:

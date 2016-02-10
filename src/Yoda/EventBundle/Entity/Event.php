@@ -7,199 +7,228 @@ use Yoda\UserBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Event
- *
- * @ORM\Table(name="yoda_event")
- * @ORM\Entity(repositoryClass="Yoda\EventBundle\Repository\EventRepository")
- */
+* Event
+*
+* @ORM\Table(name="yoda_event")
+* @ORM\Entity(repositoryClass="Yoda\EventBundle\Repository\EventRepository")
+*/
 class Event
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+  /**
+  * @var int
+  *
+  * @ORM\Column(name="id", type="integer")
+  * @ORM\Id
+  * @ORM\GeneratedValue(strategy="AUTO")
+  */
+  private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
+  /**
+  * @var string
+  *
+  * @ORM\Column(name="name", type="string", length=255)
+  */
+  private $name;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="time", type="datetime")
-     */
-    private $time;
+  /**
+  * @var \DateTime
+  *
+  * @ORM\Column(name="time", type="datetime")
+  */
+  private $time;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="location", type="string", length=255)
-     */
-    private $location;
+  /**
+  * @var string
+  *
+  * @ORM\Column(name="location", type="string", length=255)
+  */
+  private $location;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="details", type="text", nullable=true)
-     */
-    private $details;
+  /**
+  * @var string
+  *
+  * @ORM\Column(name="details", type="text", nullable=true)
+  */
+  private $details;
 
-    /**
-     * @ORM\ManyToOne(
-     *         targetEntity="Yoda\UserBundle\Entity\User",
-     *         inversedBy="events"
-     *  )
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
+  /**
+  * @ORM\ManyToOne(
+  *         targetEntity="Yoda\UserBundle\Entity\User",
+  *         inversedBy="events"
+  *  )
+  * @ORM\JoinColumn(onDelete="CASCADE")
+  */
 
-    private $owner;
+  private $owner;
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
+  /**
+  * Get id
+  *
+  * @return int
+  */
 
-     /**
-      * @ORM\Column(name="slug", unique=true)
-      * @Gedmo\Slug(fields={"name"}, updatable=false)
-      */
-     private $slug;
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+  * @ORM\Column(name="slug", unique=true)
+  * @Gedmo\Slug(fields={"name"}, updatable=false)
+  */
+  private $slug;
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Event
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+  /**
+  * @Gedmo\Timestampable(on="create")
+  * @ORM\Column(type="datetime")
+  */
+  private $createdAt;
 
-        return $this;
-    }
+  /**
+  * @Gedmo\Timestampable(on="update")
+  * @ORM\Column(type="datetime")
+  */
+  private $updatedAt;
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set time
-     *
-     * @param \DateTime $time
-     *
-     * @return Event
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
+  /**
+  * Set name
+  *
+  * @param string $name
+  *
+  * @return Event
+  */
+  public function setName($name)
+  {
+    $this->name = $name;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get time
-     *
-     * @return \DateTime
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
+  /**
+  * Get name
+  *
+  * @return string
+  */
+  public function getName()
+  {
+    return $this->name;
+  }
 
-    /**
-     * Set location
-     *
-     * @param string $location
-     *
-     * @return Event
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
+  /**
+  * Set time
+  *
+  * @param \DateTime $time
+  *
+  * @return Event
+  */
+  public function setTime($time)
+  {
+    $this->time = $time;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
+  /**
+  * Get time
+  *
+  * @return \DateTime
+  */
+  public function getTime()
+  {
+    return $this->time;
+  }
 
-    /**
-     * Set details
-     *
-     * @param string $details
-     *
-     * @return Event
-     */
-    public function setDetails($details)
-    {
-        $this->details = $details;
+  /**
+  * Set location
+  *
+  * @param string $location
+  *
+  * @return Event
+  */
+  public function setLocation($location)
+  {
+    $this->location = $location;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get details
-     *
-     * @return string
-     */
-    public function getDetails()
-    {
-        return $this->details;
-    }
+  /**
+  * Get location
+  *
+  * @return string
+  */
+  public function getLocation()
+  {
+    return $this->location;
+  }
 
-    /*
-     * @return User
-     */
+  /**
+  * Set details
+  *
+  * @param string $details
+  *
+  * @return Event
+  */
+  public function setDetails($details)
+  {
+    $this->details = $details;
 
-    public function getOwner()
-   {
-       return $this->owner;
-   }
-   /*
-    * @param User $owner
-    */
-   public function setOwner(User $owner)
-   {
-       $this->owner = $owner;
-   }
+    return $this;
+  }
 
-   /**
-    * @return mixed
-    */
-    public function getSlug() {
-      return $this->slug;
-    }
+  /**
+  * Get details
+  *
+  * @return string
+  */
+  public function getDetails()
+  {
+    return $this->details;
+  }
 
-    /**
-     * @param mixed $slug
-     */
-     public function setSlug($slug) {
-       $this->slug = $slug;
-     }
+  /*
+  * @return User
+  */
+
+  public function getOwner()
+  {
+    return $this->owner;
+  }
+  /*
+  * @param User $owner
+  */
+  public function setOwner(User $owner)
+  {
+    $this->owner = $owner;
+  }
+
+  /**
+  * @return mixed
+  */
+  public function getSlug() {
+    return $this->slug;
+  }
+
+  /**
+  * @param mixed $slug
+  */
+  public function setSlug($slug) {
+    $this->slug = $slug;
+  }
+  
+  /**
+   * @return \DateTime
+   */
+  public function getCreatedAt()
+  {
+      return $this->createdAt;
+  }
+
+  /**
+   * @return \DateTime
+   */
+  public function getUpdatedAt()
+  {
+      return $this->updatedAt;
+  }
 }
