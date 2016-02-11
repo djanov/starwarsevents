@@ -26,7 +26,8 @@ class EventController extends Controller
   {
     $em = $this->getDoctrine()->getManager();
 
-    $entities = $em->getRepository('EventBundle:Event')->findAll();
+    $entities = $em->getRepository('EventBundle:Event')
+          ->getUpcomingEvents();
 
     return array(
       'entities' => $entities,

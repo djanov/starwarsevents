@@ -154,6 +154,8 @@ security:
 
   ```
 
+  **Whenever you need a custom query: create a new method in the right repository class and build it there. Don’t create queries in your controller**
+
   Useful links:
   -------------
   Serializing:
