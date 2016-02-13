@@ -36,9 +36,18 @@
 
                     <dt>who:</dt>
                     <dd>
+                      {{ event.attendees|length }} attending!
+
                         <ul class="users">
+                          {% for attendee in event.attendees %}
+                            <li>{{ attendee }} </li>
+                          {% else %}
                             <li>nobody yet!</li>
                         </ul>
+                          {% endfor %}
+                        <a href="{{ path('event_attend', {'id': event.id}) }}" class="btn btn-success btn-xs">
+                          I totally want to go !!!
+                        </a>
                     </dd>
                 </dl>
             </section>
