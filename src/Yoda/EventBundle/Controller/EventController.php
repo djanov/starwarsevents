@@ -9,6 +9,7 @@ use Yoda\EventBundle\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exeption\AccessDeniedExceptionl;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
 * Event controller.
@@ -147,7 +148,7 @@ class EventController extends Controller
     return $this->redirectToRoute('event_index');
   }
 
-  public function attendAction($id) {
+  public function attendAction($id, $format) {
     $em = $this->getDoctrine()->getManager();
 
     $event = $em->getRepository('EventBundle:Event')
@@ -161,6 +162,16 @@ class EventController extends Controller
     }
     $em->persist($event);
     $em->flush();
+
+    if ($format == 'json') {
+      $data = array(
+        'attending' => true
+      );
+
+      $response = new Response(json_encode($data));
+
+      return $response;
+    }
 
     $url = $this->generateUrl('event_show', array(
       'slug' => $event->getSlug(),
