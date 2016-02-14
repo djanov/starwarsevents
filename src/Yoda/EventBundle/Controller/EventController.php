@@ -9,7 +9,7 @@ use Yoda\EventBundle\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exeption\AccessDeniedExceptionl;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
 * Event controller.
@@ -162,25 +162,11 @@ class EventController extends Controller
     }
     $em->persist($event);
     $em->flush();
-
-    if ($format == 'json') {
-      $data = array(
-        'attending' => true
-      );
-
-      $response = new Response(json_encode($data));
-
-      return $response;
-    }
-
-    $url = $this->generateUrl('event_show', array(
-      'slug' => $event->getSlug(),
-    ));
-
-    return $this->redirect($url);
+    
+    return $this->createAttendingResponse($event, $format);
   }
 
-  public function unattendAction($id) {
+  public function unattendAction($id, $format) {
     $em = $this->getDoctrine()->getManager();
 
     $event = $em->getRepository('EventBundle:Event')
@@ -195,12 +181,26 @@ class EventController extends Controller
     $em->persist($event);
     $em->flush();
 
-    $url = $this->generateUrl('event_show', array(
-      'slug' => $event->getSlug(),
-    ));
-
-    return $this->redirect($url);
+    return $this->createAttendingResponse($event, $format);
   }
+
+   private function createAttendingResponse(Event $event, $format) {
+     if ($format == 'json') {
+       $data = array(
+         'attending' => $event->hasAttendee($this->getUser()),
+       );
+
+       $response = new JsonResponse($data);
+
+       return $response;
+     }
+
+     $url = $this->generateUrl('event_show', array(
+       'slug' => $event->getSlug(),
+     ));
+
+     return $this->redirect($url);
+   }
 
   /**
   * Creates a form to delete a Event entity.
