@@ -47,18 +47,49 @@
           {% endfor %}
 
           {% if event.hasAttendee(app.user) %}
-            <a href="{{ path('event_unattend', {'id': event.id}) }}" class="btn btn-warning btn-xs">
-                Oh no! I can't go anymore!
-            </a>
-          {% else %}
-            <a href="{{ path('event_attend', {'id': event.id}) }}" class="btn btn-success btn-xs">
-                I totally want to go !!!
-            </a>
-          {% endif %}
-            </a>
-          </dd>
-        </dl>
-      </section>
-    </article>
-  </section>
+          <a href="{{ path('event_unattend', {'id': event.id}) }}"
+          class="btn btn-warning btn-xs js-attend-toggle">
+
+          Oh no! I can't go anymore!
+        </a>
+        {% else %}
+        <a href="{{ path('event_attend', {'id': event.id}) }}"
+        class="btn btn-success btn-xs js-attend-toggle">
+
+        I totally want to go !!!
+      </a>
+      {% endif %}
+    </a>
+  </dd>
+</dl>
+</section>
+</article>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+
+<script>
+$(document).ready(function() {
+  $('.js-attend-toggle').on('click', function(e) {
+    // prevents the browser from "following" the link
+    e.preventDefault();
+
+    var $anchor = $(this);
+    var url = $(this).attr('href')+'.json';
+
+    $.post(url, null, function(data) {
+      if (data.attending) {
+        var message = 'See you there!';
+      } else {
+        var message = 'We\'ll miss you!';
+      }
+
+      $anchor.after('<span class="label label-default">&#10004; '+message+'</span>');
+      $anchor.hide();
+    });
+  });
+});
+</script>
 {% endblock %}

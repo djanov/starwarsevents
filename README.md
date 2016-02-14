@@ -173,6 +173,8 @@ security:
   * For slug [StofDoctrineExtensionsBundle][32]
   * Also using by slug to (sluggable.md, timestampable.md)[DoctrineExtensions/doc/][33]
 
+  FOSJsRoutingBundle: [it's easy to use to generate symfony routes right in a javascript][34]
+
   Using the bcrypt password encoder:
   ---------------------------------
 
@@ -323,3 +325,4 @@ Enjoy!
 [31]: http://symfony.com/doc/2.8/reference/forms/types/collection.html
 [32]: https://github.com/stof/StofDoctrineExtensionsBundle/blob/master/Resources/doc/index.rst
 [33]: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc
+[34]: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#generating-uris
