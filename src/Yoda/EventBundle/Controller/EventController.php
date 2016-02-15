@@ -162,7 +162,7 @@ class EventController extends Controller
     }
     $em->persist($event);
     $em->flush();
-    
+
     return $this->createAttendingResponse($event, $format);
   }
 

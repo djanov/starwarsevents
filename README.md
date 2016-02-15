@@ -12,7 +12,7 @@ Notes:
   * query from console: **php app/console doctrine:query:sql "SELECT * from yoda_event"**
   * when updating the entity the doctrine need to be updated: before updating we can see what would be done: **php app/console doctrine:schema:update --dump-sql** and if its everything is alright we can execute command: **php app/console doctrine:schema:update --force**
   * to  use annotations in [doctrine docs][15] prefix them with **@ORM** before putting them in the symfony example @Column becomes **@ORM\Column** in somfony. That is because of the use statement in the Entity/Event.php **use Doctrine\ORM\Mapping as ORM;**
-  * to use app in prod option not in app.dev first need to clear the cashe for prod: **php app/console cache:clear --env=prod**
+  * to use app in prod option not in app.dev first need to clear the cache  for prod: **php app/console cache:clear --env=prod**
   * code generation(CRUD): **php app/console doctrine:generate:crud**
   * to run doctrine (adding dummy files): **php app/console doctrine:fixtures:load**
   * doctrine fixtures if working check: **php app/console doctrine:fixtures:load --help** if the code runs we are ready to import some dummy data. after that use the command again without the --help this command is first purge all the data in the database and put the "new" data what we created.
@@ -175,6 +175,8 @@ security:
 
   FOSJsRoutingBundle: [it's easy to use to generate symfony routes right in a javascript][34]
 
+  [Going Deeper with Exception Handling][35]
+
   Using the bcrypt password encoder:
   ---------------------------------
 
@@ -326,3 +328,4 @@ Enjoy!
 [32]: https://github.com/stof/StofDoctrineExtensionsBundle/blob/master/Resources/doc/index.rst
 [33]: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc
 [34]: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#generating-uris
+[35]: https://knpuniversity.com/screencast/symfony2-ep3/error-pages
