@@ -156,6 +156,13 @@ security:
 
   **Whenever you need a custom query: create a new method in the right repository class and build it there. Don’t create queries in your controller**
 
+  pro tip if we want to render partial pages use underscore in front of the name.
+
+  ```
+    public function _upcomingEventsAction()
+    
+  ```
+
   Useful links:
   -------------
   Serializing:

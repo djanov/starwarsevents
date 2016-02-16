@@ -1,16 +1,24 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
 {% endblock %}
 
 {% block body %}
-    <section class="login">
-        <article>
-            <h1>Ah crap!</h1>
+<section class="login">
+  <article>
+    <h1>Ah crap!</h1>
 
-            <div>These are not the droids you're looking for...</div>
-        </article>
-    </section>
+    <div>These are not the droids you're looking for...</div>
+  </article>
+</section>
+
+<section class="events">
+  {{ render(controller('EventBundle:Event:_upcomingEvents', {
+    'max': 1
+  })) }}
+</section>
+
+</div>
 {% endblock %}
