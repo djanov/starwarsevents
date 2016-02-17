@@ -3,6 +3,11 @@ This is my first Symfony project
 
 novalidate="novalidate atrakni?!
 
+Importent after the curse:
+-------------------------
+
+  * **Dependacy Injection and the art of services and containers** [knpuniversity][37]
+
 Notes:
 ------
   * Show every route in the app: **php app/console router:debug**
@@ -28,6 +33,7 @@ Notes:
   * [Accessing the User][29]
   * [How to Embed a Collection of Forms][30]
   * [CollectionType Field][31]
+  * [So What's a Service][36]
 
 Useful information:
 -------------------
@@ -160,7 +166,7 @@ security:
 
   ```
     public function _upcomingEventsAction()
-    
+
   ```
 
   Useful links:
@@ -336,3 +342,5 @@ Enjoy!
 [33]: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc
 [34]: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#generating-uris
 [35]: https://knpuniversity.com/screencast/symfony2-ep3/error-pages
+[36]: https://knpuniversity.com/screencast/symfony2-ep3/services#play
+[37]: http://knpuniversity.com/screencast/dependency-injection
