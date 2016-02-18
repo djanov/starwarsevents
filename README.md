@@ -34,6 +34,7 @@ Notes:
   * [How to Embed a Collection of Forms][30]
   * [CollectionType Field][31]
   * [So What's a Service][36]
+  * [Configuration Loading and Type-Hinting][38]
 
 Useful information:
 -------------------
@@ -344,3 +345,4 @@ Enjoy!
 [35]: https://knpuniversity.com/screencast/symfony2-ep3/error-pages
 [36]: https://knpuniversity.com/screencast/symfony2-ep3/services#play
 [37]: http://knpuniversity.com/screencast/dependency-injection
+[38]: https://knpuniversity.com/screencast/symfony2-ep3/config-imports-type-hinting#play
