@@ -1,4 +1,4 @@
 services:
   event_report_manager:
     class: Yoda\EventBundle\Reporting\EventReportManager
-    arguments: [@doctrine.orm.entity_manager]
+    arguments: [@doctrine.orm.entity_manager, @router]
