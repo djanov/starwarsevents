@@ -7,6 +7,8 @@ Importent after the curse:
 -------------------------
 
   * **Dependacy Injection and the art of services and containers** [knpuniversity][37]
+  * [More about Twig Extensions][40]
+  * More on Tags, [The Dependacy Injection Tags][41], very important tag is [kernel.event_listener][42], which allows you to register "hooks" inside Symfony at various stages of the request lifecycle.
 
 Notes:
 ------
@@ -38,6 +40,7 @@ Notes:
 
 Useful information:
 -------------------
+  * - **When you’re in a service and you need to do some work, just find out which service does that work, inject it through the constructor, then use it. **
 
   * - The template name is always have 3 parts: **EventBundle:Default:index.html.twig**
   * 1) A Bundle name
@@ -169,6 +172,38 @@ security:
     public function _upcomingEventsAction()
 
   ```
+
+  **Tags**: Telling Symfony about your Twig extension
+
+  If page says that filter doesn't exist. We have to create a valid Twig extension with the filter. Services to the rescue!
+  First, need to create a new service for the Twig extension:
+
+  ```
+  # src/Yoda/EventBundle/Resources/config/services.yml
+  services:
+      # ...
+
+      twig.event_extension:
+          class: Yoda\EventBundle\Twig\EventExtension
+          arguments: []
+
+  ```
+
+  The arguments are empty because we don't have a constructor in this case. At this point Twig extension is a service, but Twig doesn't know about it. We need to tell Symfony this isn't a normal service, it's a Twig Extension!
+  Add a **tags** key with **twig.extension**:
+
+  ```
+  # src/Yoda/EventBundle/Resources/config/services.yml
+services:
+    # ...
+
+    yoda_event.twig.event_extension:
+        class: Yoda\EventBundle\Twig\EventExtension
+        arguments: []
+        tags:
+            - { name: twig.extension }
+  ```
+  Twig looks for all services with the **twig.extension** tag and includes those as extensions. For more real life check out the [KnpTimeBundle][39], which is even more powerful.
 
   Useful links:
   -------------
@@ -346,3 +381,7 @@ Enjoy!
 [36]: https://knpuniversity.com/screencast/symfony2-ep3/services#play
 [37]: http://knpuniversity.com/screencast/dependency-injection
 [38]: https://knpuniversity.com/screencast/symfony2-ep3/config-imports-type-hinting#play
+[39]: https://github.com/KnpLabs/KnpTimeBundle
+[40]: http://twig.sensiolabs.org/doc/advanced.html
+[41]: http://symfony.com/doc/current/reference/dic_tags.html
+[42]: http://symfony.com/doc/current/reference/dic_tags.html#kernel-event-listener
