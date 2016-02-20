@@ -226,6 +226,8 @@ services:
 
   [Going Deeper with Exception Handling][35]
 
+  [Lifecycle Callbacks][43]
+
   Using the bcrypt password encoder:
   ---------------------------------
 
@@ -385,3 +387,4 @@ Enjoy!
 [40]: http://twig.sensiolabs.org/doc/advanced.html
 [41]: http://symfony.com/doc/current/reference/dic_tags.html
 [42]: http://symfony.com/doc/current/reference/dic_tags.html#kernel-event-listener
+[43]: https://symfony.com/doc/current/book/doctrine.html#lifecycle-callbacks
