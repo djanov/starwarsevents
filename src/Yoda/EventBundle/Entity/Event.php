@@ -87,12 +87,12 @@ class Event
   private $updatedAt;
 
   /**
-   * @ORM\ManyToMany(targetEntity="Yoda\UserBundle\Entity\User")
-   * @ORM\JoinTable(
-   *    joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
-   *    inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
-   * )
-   */
+  * @ORM\ManyToMany(targetEntity="Yoda\UserBundle\Entity\User")
+  * @ORM\JoinTable(
+  *    joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
+  *    inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
+  * )
+  */
   private $attendees;
 
   public function __construct() {
@@ -231,38 +231,38 @@ class Event
   }
 
   /**
-   * @return \DateTime
-   */
+  * @return \DateTime
+  */
   public function getCreatedAt()
   {
-      return $this->createdAt;
+    return $this->createdAt;
   }
 
   /**
-   * @return \DateTime
-   */
+  * @return \DateTime
+  */
   public function getUpdatedAt()
   {
-      return $this->updatedAt;
+    return $this->updatedAt;
   }
 
   /**
-   * @return ArrayCollection
+  * @return ArrayCollection
   */
   public function getAttendees() {
     return $this->attendees;
   }
   /**
-   * @param \Yoda\UserBundle\Entity\User $user
-   * @return bool
-   */
+  * @param \Yoda\UserBundle\Entity\User $user
+  * @return bool
+  */
   public function hasAttendee(User $user) {
     return $this->getAttendees()->contains($user);
   }
 
   /**
-   * @ORM\prePersist
-   */
+  * @ORM\prePersist
+  */
   public function prePersist() {
     if (!$this->getCreatedAt()) {
       $this->createdAt=new \DateTime();
