@@ -25,9 +25,14 @@ use Doctrine\ORM\EntityManager;
 /** @var EntityManager $em */
 $em = $container->get('doctrine')->getManager();
 
-$wayne = $em->getRepository('UserBundle:User')
+$wayne = $em
+  ->getRepository('UserBundle:User')
   ->findOneByUsernameOrEmail('wayne');
 
-foreach ($wayne->getEvents() as $event) {
-  var_dump($event->getName());
-}
+$wayne->setPlainPassword('new');
+$em->persist($wayne);
+$em->flush();
+
+// foreach ($wayne->getEvents() as $event) {
+//   var_dump($event->getName());
+// }

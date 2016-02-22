@@ -16,16 +16,26 @@ class UserListener {
 
   public function prePersist(LifecycleEventArgs $args) {
     if ($entity instanceof User) {
-        $this->handleEvent($entity);
+      $this->handleEvent($entity);
     }
   }
 
   public function handleEvent(User $user) {
-    $plainPassword = $user->getPlainPassword();
+     $plainPassword = $user->getPlainPassword();
+    if (!$user->getPlainPassword()) {
+      return;
+    }
     $encoder = $this->encoderFactory
-        ->getEncoder($user);
+    ->getEncoder($user);
 
     $password = $encoder->encodePassword($plainPassword, $user->getSalt());
     $user->setPassword($password);
+  }
+
+  public function preUpdate(LifecycleEventArgs $args){
+    $entity = $args->getEntity();
+    if ($entity instanceof User) {
+      $this->handleEvent($entity);
+    }
   }
 }
