@@ -205,6 +205,33 @@ services:
   ```
   Twig looks for all services with the **twig.extension** tag and includes those as extensions. For more real life check out the [KnpTimeBundle][39], which is even more powerful.
 
+  Working with assets when using the config.yml file to add CDN host:
+  ```
+  # app/config/config.yml
+framework:
+    # ...
+    templating:
+        engines: ['twig']
+        assets_version: 5-return-of-the-jedi
+        assets_version_format: "%%s?v=%%s"
+        assets_base_url: http://evilempireassets.com
+
+  ```
+  in the **assets_base_url** take the **http** part of the host name
+  ```
+  # app/config/config.yml
+# ...
+
+framework:
+    # ...
+    templating:
+        engines: ['twig']
+        assets_version: 5-return-of-the-jedi
+        assets_version_format: "%%s?v=%%s"
+        assets_base_url: //myfancycdn.com
+  ```
+  This is a valid URL and make sure if the user is on an https page on your site that the css file is also downloaded via **https**. This avoids the annoying warnings about "non-secure" assets.
+
   Useful links:
   -------------
   Serializing:
