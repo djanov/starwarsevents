@@ -232,6 +232,18 @@ framework:
   ```
   This is a valid URL and make sure if the user is on an https page on your site that the css file is also downloaded via **https**. This avoids the annoying warnings about "non-secure" assets.
 
+  WHAT IS A CACHE BUSTER?
+  =======================
+
+  A cache-buster is a unique piece of code that prevents a browser from reusing an ad it has already seen and cached, or saved, to a temporary memory file.
+
+  **What Does a Cache-Buster Do?**
+
+  The cache-buster doesn’t stop a browser from caching the file, it just prevents it from reusing it. In most cases, this is accomplished with nothing more than a random number inserted into the ad tag on each page load. The random number makes every ad call look unique to the browser and therefore prevents it from associating the tag with a cached file, forcing a new call to the ad server.
+
+  Cache-busting maximizes publisher inventory, keeps the value and meaning of an impression constant, and helps minimize discrepancies between Publisher and Marketer delivery reports.
+
+
   Useful links:
   -------------
   Serializing:
