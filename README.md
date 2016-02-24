@@ -38,6 +38,12 @@ Notes:
   * [So What's a Service][36]
   * [Configuration Loading and Type-Hinting][38]
   * [FrameworkBundle Configuration "framework"][44]
+  * In the **dev** environment, Symfony keeps our 3 files so we can debug more easily. In **prod**, it puts them all together, but when your browser request this one CSS file, it's still being executed through dynamic Symfony route. For production, that's way too slow. And depending on your steup, it may not even be working in the **prod** environment. So to gain more speed
+  ```
+   php app/console assetic:dump --env=prod
+
+  ```
+  This wrote a physical file to the **web/css** directory. And when we refresh, the web server loads this file instead of going through Symfony. When we deploy our application, this command will be part of our deploy process.
 
 Useful information:
 -------------------
