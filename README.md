@@ -37,6 +37,7 @@ Notes:
   * [CollectionType Field][31]
   * [So What's a Service][36]
   * [Configuration Loading and Type-Hinting][38]
+  * [FrameworkBundle Configuration "framework"][44]
 
 Useful information:
 -------------------
@@ -427,3 +428,4 @@ Enjoy!
 [41]: http://symfony.com/doc/current/reference/dic_tags.html
 [42]: http://symfony.com/doc/current/reference/dic_tags.html#kernel-event-listener
 [43]: https://symfony.com/doc/current/book/doctrine.html#lifecycle-callbacks
+[44]: https://symfony.com/doc/2.8/reference/configuration/framework.html#assets-base-urls
