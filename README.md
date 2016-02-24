@@ -45,6 +45,22 @@ Notes:
   ```
   This wrote a physical file to the **web/css** directory. And when we refresh, the web server loads this file instead of going through Symfony. When we deploy our application, this command will be part of our deploy process.
 
+  The **cssrewrite** filter dynamically changes the url so that things still work.
+
+  ```
+  {% stylesheets
+    'bundles/event/css/event.css'
+    'bundles/event/css/events.css'
+    'bundles/event/css/main.css'
+    filter='cssrewrite'
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+
+  ```
+  More about [Assetic filters][45] but lot of them aren't documented.
+
+
 Useful information:
 -------------------
   * - **When you’re in a service and you need to do some work, just find out which service does that work, inject it through the constructor, then use it. **
@@ -249,22 +265,6 @@ framework:
   The cache-buster doesn’t stop a browser from caching the file, it just prevents it from reusing it. In most cases, this is accomplished with nothing more than a random number inserted into the ad tag on each page load. The random number makes every ad call look unique to the browser and therefore prevents it from associating the tag with a cached file, forcing a new call to the ad server.
 
   Cache-busting maximizes publisher inventory, keeps the value and meaning of an impression constant, and helps minimize discrepancies between Publisher and Marketer delivery reports.
-
-  The **cssrewrite** filter dynamically changes the url so that things still work.
-
-  ```
-  {% stylesheets
-    'bundles/event/css/event.css'
-    'bundles/event/css/events.css'
-    'bundles/event/css/main.css'
-    filter='cssrewrite'
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
-
-  ```
-  More about [Assetic filters][45] but lot of them aren't documented.
-
 
   Useful links:
   -------------
