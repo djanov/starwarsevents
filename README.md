@@ -244,6 +244,21 @@ framework:
 
   Cache-busting maximizes publisher inventory, keeps the value and meaning of an impression constant, and helps minimize discrepancies between Publisher and Marketer delivery reports.
 
+  The **cssrewrite** filter dynamically changes the url so that things still work.
+
+  ```
+  {% stylesheets
+    'bundles/event/css/event.css'
+    'bundles/event/css/events.css'
+    'bundles/event/css/main.css'
+    filter='cssrewrite'
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+
+  ```
+  More about [Assetic filters][45] but lot of them aren't documented.
+
 
   Useful links:
   -------------
@@ -429,3 +444,4 @@ Enjoy!
 [42]: http://symfony.com/doc/current/reference/dic_tags.html#kernel-event-listener
 [43]: https://symfony.com/doc/current/book/doctrine.html#lifecycle-callbacks
 [44]: https://symfony.com/doc/2.8/reference/configuration/framework.html#assets-base-urls
+[45]: https://github.com/kriswallsmith/assetic#filters
