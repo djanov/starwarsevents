@@ -76,7 +76,8 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
-
+        uglifycss:
+            bin: %kernel.root_dir%/../node_modules/.bin/uglifycss
 stof_doctrine_extensions:
   orm:
     default:

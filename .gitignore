@@ -12,3 +12,4 @@
 /composer.phar
 /web/css/built
 /web/js/built
+/node_modules

@@ -60,6 +60,25 @@ Notes:
   ```
   More about [Assetic filters][45] but lot of them aren't documented.
 
+  * Applying a Filter only in the prod Environment.
+  - If we want the **uglifycss** filter to only run in the prod environment. We can do just by adding a **?** before the filter name:
+
+  ```
+  {# app/Resources/views/base.html.twig #}
+    {# ... #}
+
+    {% stylesheets
+      'bundles/event/css/event.css'
+      'bundles/event/css/events.css'
+      'bundles/event/css/main.css'
+      filter='cssrewrite'
+      filter='?uglifycss'
+      output='css/built/layout.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+ {% endstylesheets %}
+ ```
+
 
 Useful information:
 -------------------
