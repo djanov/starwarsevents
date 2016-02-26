@@ -40,6 +40,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+      resources:
+        - "::form_theme.html.twig"
 
 # Doctrine Configuration
 doctrine:

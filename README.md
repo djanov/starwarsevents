@@ -10,6 +10,11 @@ Importent after the curse:
   * [More about Twig Extensions][40]
   * More on Tags, [The Dependacy Injection Tags][41], very important tag is [kernel.event_listener][42], which allows you to register "hooks" inside Symfony at various stages of the request lifecycle.
 
+  Bootsrap Bundle from knp:
+
+  * [MopaBootstrapBundle][47]
+  * [BraincraftedBootsrapBundle][48]
+
 Notes:
 ------
   * Show every route in the app: **php app/console router:debug**
@@ -55,7 +60,7 @@ Notes:
     filter='cssrewrite'
 %}
     <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
+{% endstylesheets %}  
 
   ```
   More about [Assetic filters][45] but lot of them aren't documented.
@@ -78,6 +83,8 @@ Notes:
     <link rel="stylesheet" href="{{ asset_url }}" />
  {% endstylesheets %}
  ```
+
+ * [If dev environment start running slower][46]
 
 
 Useful information:
@@ -470,3 +477,6 @@ Enjoy!
 [43]: https://symfony.com/doc/current/book/doctrine.html#lifecycle-callbacks
 [44]: https://symfony.com/doc/2.8/reference/configuration/framework.html#assets-base-urls
 [45]: https://github.com/kriswallsmith/assetic#filters
+[46]: https://symfony.com/doc/current/cookbook/assetic/asset_management.html#dumping-asset-files-in-the-dev-environment
+[47]: http://knpbundles.com/phiamo/MopaBootstrapBundle
+[48]: http://knpbundles.com/braincrafted/bootstrap-bundle
