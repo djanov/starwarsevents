@@ -292,6 +292,33 @@ framework:
 
   Cache-busting maximizes publisher inventory, keeps the value and meaning of an impression constant, and helps minimize discrepancies between Publisher and Marketer delivery reports.
 
+  Form Variables: The Holy Grail of Form Rendering Control
+  ========================================================
+
+  Inside the **form_errors** block, we have access to some **errors** variable. In fact, in each block we have access to a bunch of variables, like **label**, **value**, **name**, **full_name** and **required.**
+
+  Let's use a trick to see all of the variables we have acces to in **form_errors**:
+
+  ```
+  {# app/Resources/views/form_theme.html.twig #}
+    {# ... #}
+
+    {% block form_errors %}
+      {{ dump(_context|keys) }}
+
+      {% if errors|length > 0 %}
+        <ul class="help-block">
+          {% for error in errors %}
+              <li>{{ error.message }}</li>
+          {% endfor %}
+        </ul>
+     {% endif %}
+ {% endblock form_errors %}
+
+```
+  so the important part is the **{{ dump(_context|keys ) }}** when the magic happens. The **dump** is a Twig debugging function, like **var_dump**. You can pass it any variable to print it out.
+
+
   Useful links:
   -------------
   Serializing:
