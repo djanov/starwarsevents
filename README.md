@@ -318,6 +318,10 @@ framework:
 ```
   so the important part is the **{{ dump(_context|keys ) }}** when the magic happens. The **dump** is a Twig debugging function, like **var_dump**. You can pass it any variable to print it out.
 
+ if the css doesn't won't work or something like that if clearing the cache or dump the assetic then try **php app/console assets:install --symlink**
+
+ [The Block Names (e.g. form_row versus textarea_widget)][49] aka Tweak all the things! Just find the right block, copy it into your template, use the variables and customize it. [the cookbook article][50]
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   Useful links:
   -------------
@@ -507,3 +511,5 @@ Enjoy!
 [46]: https://symfony.com/doc/current/cookbook/assetic/asset_management.html#dumping-asset-files-in-the-dev-environment
 [47]: http://knpbundles.com/phiamo/MopaBootstrapBundle
 [48]: http://knpbundles.com/braincrafted/bootstrap-bundle
+[49]: https://knpuniversity.com/screencast/symfony2-ep4/form-input-label-customizations#play
+[50]: https://symfony.com/doc/current/cookbook/form/form_customization.html
