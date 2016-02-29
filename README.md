@@ -9,6 +9,7 @@ Importent after the curse:
   * **Dependacy Injection and the art of services and containers** [knpuniversity][37]
   * [More about Twig Extensions][40]
   * More on Tags, [The Dependacy Injection Tags][41], very important tag is [kernel.event_listener][42], which allows you to register "hooks" inside Symfony at various stages of the request lifecycle.
+  * [Changhing and Using Form Variables][51] (Inventing a New Form Variable and using it in the form_teheme.html.twig then we can use this in our register.html.twig but we can do the same in the RegisterFormType.php using the FormView Customizing Form Variables from Form Type by adding 2 use statements FormInterface and FormView then assign some data or w/e). [Most of the core built-in form view variables come from a FormType::buildView method][53]
 
   Bootsrap Bundle from knp:
 
@@ -85,7 +86,7 @@ Notes:
  ```
 
  * [If dev environment start running slower][46]
-
+ * [Twig Template Form Function and variable Reference][52]
 
 Useful information:
 -------------------
@@ -513,3 +514,6 @@ Enjoy!
 [48]: http://knpbundles.com/braincrafted/bootstrap-bundle
 [49]: https://knpuniversity.com/screencast/symfony2-ep4/form-input-label-customizations#play
 [50]: https://symfony.com/doc/current/cookbook/form/form_customization.html
+[51]: https://knpuniversity.com/screencast/symfony2-ep4/more-form-customizations#play
+[52]: https://symfony.com/doc/2.8/reference/forms/twig_reference.html#twig-reference-form-variables
+[53]: https://github.com/symfony/symfony/blob/2.1/src/Symfony/Component/Form/Extension/Core/Type/FormType.php#L106
