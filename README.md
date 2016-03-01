@@ -16,6 +16,52 @@ Importent after the curse:
   * [MopaBootstrapBundle][47]
   * [BraincraftedBootsrapBundle][48]
 
+Deployment
+==========
+
+  First time steps:
+
+ * Step 1. **git clone git@github.com:djanov/starwarsevents.git knpevents.com**
+ * Step 2. Configuring the Web Server (I'm using the XAMPP) open Apache config file (httpd.conf) the in the end (example we have the project in the **c:\xampp\htdocs\knpevents.com**) add:
+ ```
+ <VirtualHost *:80>
+     ServerName knpevents.com
+     DocumentRoot "/xampp/htdocs/live/knpevents.com/web"
+
+     <Directory "/xampp/htdocs/live/knpevents.com/web">
+         AllowOverride All
+     </Directory>
+ErrorLog /var/log/apache2/events_error.log
+CustomLog /var/log/apache2/events_access.log combined
+ </VirtualHost>
+
+ ```
+ then restart the apache2 server
+
+ * Step 3. Install composer: **curl -sS https://getcomposer.org/installer | php** then install the coposer.phar. linux: **php composer.phar install**, windows: **composer install**
+
+ * Step 4. Then create the database insert the schema and add some dummy data:
+ ```
+php app/console doctrine:database:create
+php app/console doctrine:schema:create
+php app/console doctrine:fixtures:load
+
+ ```
+ * Step 5. only in linux, we have an error when we go to **knpevents.com** we can't write to the cache directory so give privileges to cache and logs : **sudo chmod -R 777 app/cache/ app/logs**
+
+ * Step 6. The site will now run but the css will not work and so need to dump the assetic assets and to install the uglifycss for the minifying so first install that
+ ```
+ npm install
+
+ php app/console assetic:dump --env=prod
+
+ ```
+
+ * Step 7. Done. I just add step 7 because its my favorite number lol.
+
+ Thing to do on each Deploy (coming soon)
+ ========================================
+
 Notes:
 ------
   * Show every route in the app: **php app/console router:debug**
