@@ -15,6 +15,7 @@ class UserListener {
   }
 
   public function prePersist(LifecycleEventArgs $args) {
+    $entity = $args->getEntity();
     if ($entity instanceof User) {
       $this->handleEvent($entity);
     }

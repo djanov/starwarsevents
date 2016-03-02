@@ -57,6 +57,19 @@ php app/console doctrine:fixtures:load
 
  ```
 
+ If the uglifycss doesn't work. After npm install go to and change in **config.yml** under filters(tested in windows 10):
+ ```
+ uglifycss:
+   node:  null
+   bin: "C:/Users/WHATEVER_IS_YOUR_USERNAME/AppData/Roaming/npm/uglifycss"
+
+  ```
+  After that run first: **php app/console cache:clear --env=prod** The --env=prod is important! and then run the command:
+  ```
+  php app/console assetic:dump --env=prod
+
+  ```
+
  * Step 7. Done. I just add step 7 because its my favorite number lol.
 
  Thing to do on each Deploy (coming soon)
@@ -362,13 +375,15 @@ framework:
      {% endif %}
  {% endblock form_errors %}
 
-```
-  so the important part is the **{{ dump(_context|keys ) }}** when the magic happens. The **dump** is a Twig debugging function, like **var_dump**. You can pass it any variable to print it out.
+ ```
+
+  So the important part is the **{{ dump(_context|keys ) }}** when the magic happens. The **dump** is a Twig debugging function, like **var_dump**. You can pass it any variable to print it out.
 
  if the css doesn't won't work or something like that if clearing the cache or dump the assetic then try **php app/console assets:install --symlink**
 
- [The Block Names (e.g. form_row versus textarea_widget)][49] aka Tweak all the things! Just find the right block, copy it into your template, use the variables and customize it. [the cookbook article][50]
- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ [The Block Names (e.g. form_row versus textarea_widget)][49] aka Tweak all the things! Just find the right block, copy it into your template, use the variables and customize it. [the cookbook article][50].
+
+
 
   Useful links:
   -------------

@@ -82,7 +82,9 @@ assetic:
     filters:
         cssrewrite: ~
         uglifycss:
-            bin: %kernel.root_dir%/../node_modules/.bin/uglifycss
+          node:  null
+          bin: "C:/Users/jkr/AppData/Roaming/npm/uglifycss"
+          
 stof_doctrine_extensions:
   orm:
     default:
