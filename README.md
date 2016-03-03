@@ -22,6 +22,9 @@ Deployment
   First time steps:
 
  * Step 1. **git clone git@github.com:djanov/starwarsevents.git knpevents.com**
+ * Step 1.1 **MOVE** => **cd knpevents.com** into the directory if your code lives anywhere other the master barnch, you'll need to switch to that branch: **git checkout -b  episode4-finish origin/episode4-finish**
+ * Step 1.2 Github might ask to authenticate or give some public key error if that happens you'll need to register the public key of your Server as a [deploy key][54] for your repository. This is what gives your server permission access to the code.
+
  * Step 2. Configuring the Web Server (I'm using the XAMPP) open Apache config file (httpd.conf) the in the end (example we have the project in the **c:\xampp\htdocs\knpevents.com**) add:
  ```
  <VirtualHost *:80>
@@ -38,7 +41,7 @@ CustomLog /var/log/apache2/events_access.log combined
  ```
  then restart the apache2 server
 
- * Step 3. Install composer: **curl -sS https://getcomposer.org/installer | php** then install the coposer.phar. linux: **php composer.phar install**, windows: **composer install**
+ * Step 3. Install [composer][55]: **curl -sS https://getcomposer.org/installer | php** then install the coposer.phar. linux: **php composer.phar install**, windows: **composer install**
 
  * Step 4. Then create the database insert the schema and add some dummy data:
  ```
@@ -72,8 +75,56 @@ php app/console doctrine:fixtures:load
 
  * Step 7. Done. I just add step 7 because its my favorite number lol.
 
- Thing to do on each Deploy (coming soon)
- ========================================
+ Thing to do on each Deploy  
+ ==========================
+
+ * Step 1. Update your Code, as simple as running a git pull:
+ ```
+ git pull origin
+
+ ```
+
+* Step 2. If there are new libraries in Composer, run the install command (windows):
+```
+composer install
+```
+Linux:
+```
+php composer.phar install
+
+```
+
+* Step 3. Update the database schema, the easy but maybe dangerous way is with the schema update console command:
+
+```
+php app/console doctrine:schema:update --force
+```
+This is dangerous because let's say you rename a property from **name** to **firstName**. Instead of renaming the column, this task may just **drop** name and add **firstName**. That would mean that you'd lose all that data! But there's a library called [Doctrine Migrations][56] that helps do this safely.
+
+* Step 4. Clear the production cace:
+
+```
+php app/console cache:clear --env=prod
+```
+
+* Step 5. Dump Assetic assets:
+
+```
+php app/console assetic:dump --env=pord
+```
+
+* Step 6. **DONE**
+
+* Bonus Step 7. Performeance Setup you Need!!
+
+To maximize Symfony's performance:
+First when deploy, dump Composer's optimized autoloader:
+```
+php composer.phar dump-autoload --optimize // linux
+composer dump-autoload --optimize // windows (not tested)
+```
+if you add the **–optimize-autoloader** flag, Composer will generate a class map, which will give the whole application a performance boost. Using the [APC ClassLoader][57] may give an even bigger boost.
+Next make sure that byte code cache is installed on the server. for php 5.5 it's OPcache. In background, these cache the compiled PHP files, making the site much faster. Make sure you have one of these on the server there's no downside.
 
 Notes:
 ------
@@ -578,3 +629,7 @@ Enjoy!
 [51]: https://knpuniversity.com/screencast/symfony2-ep4/more-form-customizations#play
 [52]: https://symfony.com/doc/2.8/reference/forms/twig_reference.html#twig-reference-form-variables
 [53]: https://github.com/symfony/symfony/blob/2.1/src/Symfony/Component/Form/Extension/Core/Type/FormType.php#L106
+[54]: https://developer.github.com/guides/managing-deploy-keys/
+[55]: https://getcomposer.org/download/
+[56]: https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+[57]: https://symfony.com/doc/current/book/performance.html#caching-the-autoloader-with-apc
