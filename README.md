@@ -16,6 +16,10 @@ Importent after the curse:
   * [MopaBootstrapBundle][47]
   * [BraincraftedBootsrapBundle][48]
 
+
+  - FOSJsRoutingBundle: [it's easy to use to generate symfony routes right in a javascript][34]
+
+  - The FOSUserBundle adds support for a database-backed user system in Symfony2. It provides a flexible framework for user management that aims to handle common tasks such as user registration and password retrieval.[FOSUserBundle][58]
 Deployment
 ==========
 
@@ -453,8 +457,6 @@ framework:
   * For slug [StofDoctrineExtensionsBundle][32]
   * Also using by slug to (sluggable.md, timestampable.md)[DoctrineExtensions/doc/][33]
 
-  FOSJsRoutingBundle: [it's easy to use to generate symfony routes right in a javascript][34]
-
   [Going Deeper with Exception Handling][35]
 
   [Lifecycle Callbacks][43]
@@ -633,3 +635,4 @@ Enjoy!
 [55]: https://getcomposer.org/download/
 [56]: https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
 [57]: https://symfony.com/doc/current/book/performance.html#caching-the-autoloader-with-apc
+[58]: https://github.com/FriendsOfSymfony/FOSUserBundle
